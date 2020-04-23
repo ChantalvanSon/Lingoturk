@@ -18,3 +18,5 @@ conf/evolutions/default/1.sql
 conf/backup.sql
 backup/
 conf/application.conf
+conf/mturk.properties
+conf/mturkToAMT.properties
