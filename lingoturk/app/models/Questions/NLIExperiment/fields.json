@@ -1,1 +1,67 @@
-[{"type":"String","simpleTypeName":"String","name":"sentence"},{"type":"String","simpleTypeName":"String","name":"statement"},{"type":"String","simpleTypeName":"String","name":"source1"},{"type":"String","simpleTypeName":"String","name":"visibility1"}]
+[
+    {
+        "type": "Integer",
+        "simpleTypeName": "Integer",
+        "name": "index"
+    },
+    {
+        "type": "String",
+        "simpleTypeName": "String",
+        "name": "sent_id"
+    },
+    {
+        "type": "String",
+        "simpleTypeName": "String",
+        "name": "sentence"
+    },
+    {
+        "type": "String",
+        "simpleTypeName": "String",
+        "name": "sentence_html"
+    },
+    {
+        "type": "String",
+        "simpleTypeName": "String",
+        "name": "statement"
+    },
+    {
+        "type": "String",
+        "simpleTypeName": "String",
+        "name": "statement_prop_ids"
+    },
+    {
+        "type": "Integer",
+        "simpleTypeName": "Integer",
+        "name": "n_sources"
+    },
+    {
+        "type": "String",
+        "simpleTypeName": "String",
+        "name": "source1"
+    },
+    {
+        "type": "String",
+        "simpleTypeName": "String",
+        "name": "visibility1"
+    },
+    {
+        "type": "String",
+        "simpleTypeName": "String",
+        "name": "source2"
+    },
+    {
+        "type": "String",
+        "simpleTypeName": "String",
+        "name": "visibility2"
+    },
+    {
+        "type": "String",
+        "simpleTypeName": "String",
+        "name": "source3"
+    },
+    {
+        "type": "String",
+        "simpleTypeName": "String",
+        "name": "visibility3"
+    }
+]
