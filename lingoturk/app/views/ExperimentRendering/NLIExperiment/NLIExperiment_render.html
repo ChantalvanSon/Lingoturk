@@ -41,19 +41,18 @@
                                 <!--<legend>Read the following texts and pay attention to the highlighted statements:</legend>-->
                                 <div class="col-md-6">
                                     <legend>JOHN WROTE:</legend>
-                                    <div class="passage" id="passage"> <span
-                                            class='term semroleterm'>Vaccinations</span> are <span
-                                            class='term semroleterm'>not</span> <span class='term semroleterm'>a legal
-                                            requirement</span> <span class='term semroleterm'>in the UK</span> .
-                                        {{question.sentence}}</div>
-                                </div>
-                                <div class="col-md-6">
-                                    <legend>STATEMENT</legend>
-                                    <div class="passage" id="passage">{{question.statement}}</div>
-                                </div>
+                                    <div class="passage" id="sentence">
+                                        <div ng-bind-html="question.sentence_html"></div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <legend>STATEMENT</legend>
+                                        <div class="passage" id="passage">{{question.statement}}</div>
+                                    </div>
                             </fieldset>
                         </center>
                     </div>
+
 
                     <br>
                     <br>
@@ -105,11 +104,58 @@
                             </select>
                         </div>
                     </div>
+
+                    <div class="row" style="visibility:{{question.visibility2}}">
+                        <label class="col-md-5" for="selectbasic" style="font-weight:normal">
+                            <H5 align="right">
+                                <span style="font-family:verdana;color:blue">
+                                    {{question.source2}}
+                                </span>
+                            </H5>
+                        </label>
+                        <div class="col-md-4">
+                            <select id="agreeOrDisagree" name="agreeOrDisagree" class="form-control"
+                                ng-model="question2.answer">
+                                <option value="" selected disabled hidden> -- select an option --
+                                </option>
+                                <option value="agree">AGREES with the statement</option>
+                                <option value="disagree">DISAGREES with the statement</option>
+                                <option value="partially_agree">ONLY PARTIALLY AGREES with the statement</option>
+                                <option disabled>──────────</option>
+                                <option value="uncertain">I cannot tell</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row" style="visibility:{{question.visibility3}}">
+                        <label class="col-md-5" for="selectbasic" style="font-weight:normal">
+                            <H5 align="right">
+                                <span style="font-family:verdana;color:blue">
+                                    {{question.source3}}
+                                </span>
+                            </H5>
+                        </label>
+                        <div class="col-md-4">
+                            <select id="agreeOrDisagree" name="agreeOrDisagree" class="form-control"
+                                ng-model="question3.answer">
+                                <option value="" selected disabled hidden> -- select an option --
+                                </option>
+                                <option value="agree">AGREES with the statement</option>
+                                <option value="disagree">DISAGREES with the statement</option>
+                                <option value="partially_agree">ONLY PARTIALLY AGREES with the statement</option>
+                                <option disabled>──────────</option>
+                                <option value="uncertain">I cannot tell</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <script>highlightPhrases(sentence, 0, 10);</script>
+
                     <!--
                         End of question
                         -->
                     <button
-                        ng-disabled="question0.answer === undefined || (question.source1 === 'visible' && question1.answer === undefined) "
+                        ng-disabled="question0.answer === undefined || (question.visibility1 === 'visible' && question1.answer === undefined) || (question.visibility2 === 'visible' && question2.answer === undefined) || (question.visibility3 === 'visible' && question3.answer === undefined)"
                         ng-click="RC.nextQuestion()" type="button" class="btn btn-default"
                         style="float:right ; margin-top:20px">Next</button>
                     <!--
