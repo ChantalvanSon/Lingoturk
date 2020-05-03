@@ -1,5 +1,5 @@
 (function () {
-    var app = angular.module('Lingoturk', []);
+    var app = angular.module('Lingoturk', ['ngSanitize']);
 
     /* http://stackoverflow.com/questions/9381926/angularjs-insert-html-into-view */
     app.filter('unsafe', function ($sce) {
@@ -150,7 +150,7 @@
                 addNone: '@?'
             },
             link: function (scope, element, attrs) {
-                if (!scope.hasOwnProperty("answer") || typeof(scope.answer) === "undefined") {
+                if (!scope.hasOwnProperty("answer") || typeof (scope.answer) === "undefined") {
                     scope.answer = {};
                 }
                 scope.addNone = scope.hasOwnProperty("addNone") && scope.addNone == "true";
@@ -165,7 +165,7 @@
                     scope.answer = a;
                 };
                 scope.loaded = function () {
-                    $('[data-toggle="tooltip"]').tooltip({delay: 0});
+                    $('[data-toggle="tooltip"]').tooltip({ delay: 0 });
                 }
             }
         };
@@ -272,7 +272,7 @@
                 for (var attribute in attrs) {
                     if (attrs.hasOwnProperty(attribute) && attribute.startsWith('category')) {
                         var attributeName = attribute.replace('category', '');
-                        var cat = {category: attributeName};
+                        var cat = { category: attributeName };
                         var connectives = attrs[attribute].split(",");
                         $.map(connectives, $.trim);
                         cat['connectives'] = connectives;
