@@ -3,6 +3,7 @@
         <div ng-if="RC.state == 'instructionsSlide'" class="panel panel-primary" style="width:90%; margin:auto">
             <div class="panel-heading" style="font-weight: bolder ;">Instructions</div>
             <div class="panel-body">
+                <h4>The task</h4>
                 <p>In this task, you will be presented with:</p>
 
                 <ol>
@@ -10,10 +11,184 @@
                     <li>an independent STATEMENT</li>
                 </ol>
 
-                <p>Please indicate whether JOHN would AGREE or DISAGREE with the statement.</p>
+                <p>Please indicate whether JOHN would AGREE or DISAGREE with the statement.<br>
 
-                <p>If there are other PEOPLE/SOURCES quoted in the sentence, please
+                    If there are other PEOPLE/SOURCES quoted in the sentence, please
                     indicate their opinion with respect to the statement as well.</p>
+
+                <h4>The labels</h4>
+                <table class="table table-condensed table-borderless table-responsive" style="font-size:small;">
+                    <tbody>
+                    </tbody>
+                    <colgroup>
+                        <col class="col-xs-1" />
+                        <col class="col-xs-4" />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td>AGREEMENT</td>
+                            <td>If John beliefs what is in the sentence, he must believe that the statement
+                                is true.</td>
+                        </tr>
+                        <tr>
+                            <td>DISAGREEMENT</td>
+                            <td>If John beliefs what is in the sentence, he must believe that the statement
+                                is false.</td>
+                        </tr>
+                        <tr>
+                            <td>PARTIAL AGREEMENT</td>
+                            <td>If John beliefs what is in the sentence, he must believe that the statement
+                                is only partially true.</td>
+                        </tr>
+                        <tr>
+                            <td>I CANNOT TELL</td>
+                            <td>The statement is about something else than the sentence, or it cannot be determined what
+                                John believes to be true.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>Important</h4>
+                <p> Base your question only on what is written in the text. Try not to guess
+                    based on what you know about pro- and anti-vaccine beliefs. For example:</p>
+
+                <ol>
+                    <li>I am convinced that vaccines are 100% safe.</li>
+                </ol>
+
+                <p> From this sentence, we can infer that John would disagree with a statement
+                    like "vaccines cause dangerous side effects". <br>
+                    After all, the statements "vaccines are 100% safe" and
+                    "vaccines cause dangerous side effects" cannot be true at the same time.</p>
+
+                <p> However, even though John is likely pro-vaccination, we CANNOT infer that John
+                    agrees with a statement like "vaccines are effective". <br>
+                    After all, the safety and effectiveness of vaccines are two different topics,
+                    so John could believe that vaccines are safe but ineffective at the same time.
+                </p>
+
+                <div class="panel-group">
+                    <div class="panel panel-secondary">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" href="#collapse1">Examples (click to expand)</a>
+                            </h4>
+                        </div>
+                        <div id="collapse1" class="panel-collapse collapse">
+                            <div class="panel-body">
+
+                                <!-- EXAMPLE -->
+                                <h4>Sentences WITHOUT quoted people/sources:</h4>
+                                <table class="table table-condensed table-striped table-responsive"
+                                    style="font-size:small;">
+                                    <tbody>
+                                    </tbody>
+                                    <colgroup>
+                                        <col class="col-xs-6" />
+                                        <col class="col-xs-2" />
+                                        <col class="col-xs-4" />
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>JOHN WROTE:</th>
+                                            <th>STATEMENT</th>
+                                            <th>CORRECT ANSWER</th>
+                                        </tr>
+                                        <tr>
+                                            <td>There is a clear causal relation between vaccines and ASD.</td>
+                                            <td>vaccines cause autism</td>
+                                            <td>John AGREES with the statement</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Vaccines protect against infectious diseases that can cause serious
+                                                illness.
+                                            </td>
+                                            <td>vaccines are effective</td>
+                                            <td>John AGREES with the statement</td>
+                                        </tr>
+                                        <tr>
+                                            <td>It has not been proven that vaccines are safe.</td>
+                                            <td>vaccines are safe</td>
+                                            <td>John DISAGREES with the statement</td>
+                                        </tr>
+                                        <tr>
+                                            <td>There is a clear causal relation between vaccines and ASD.</td>
+                                            <td>vaccines are safe</td>
+                                            <td>John DISAGREES with the statement</td>
+                                        </tr>
+                                        <tr>
+                                            <td>The vaccination is less effective in patients with HIV.</td>
+                                            <td>vaccines are effective</td>
+                                            <td>John ONLY PARTIALLY AGREES with the statement</td>
+                                        </tr>
+                                        <tr>
+                                            <td>In rare cases, vaccines could produce side effects.</td>
+                                            <td>vaccines are safe</td>
+                                            <td>John ONLY PARTIALLY AGREES with the statement</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Vaccines don't work 100% of the time.</td>
+                                            <td>vaccines are safe</td>
+                                            <td>John -- I cannot tell</td>
+                                        </tr>
+                                        <tr>
+                                            <td>It's not entirely clear whether vaccines really work.</td>
+                                            <td>vaccines are effective</td>
+                                            <td>John -- I cannot tell</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <h4>Sentences WITH quoted people/sources:</h4>
+                                <table class="table table-condensed table-striped table-responsive"
+                                    style="font-size:small;">
+                                    <tbody>
+                                    </tbody>
+                                    <colgroup>
+                                        <col class="col-xs-6" />
+                                        <col class="col-xs-2" />
+                                        <col class="col-xs-4" />
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>JOHN WROTE:</th>
+                                            <th>STATEMENT</th>
+                                            <th>CORRECT ANSWER</th>
+                                        </tr>
+                                        <tr>
+                                            <td>According to <span style="color:blue">Andrew Wakefield</span>, vaccines
+                                                cause ASD.</td>
+                                            <td>vaccines are safe</td>
+                                            <td><span style="color:blue">Andrew Wakefield</span> DISAGREES with the
+                                                statement
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>According to <span style="color:blue">Andrew Wakefield</span>, vaccines
+                                                cause ASD.</td>
+                                            <td>vaccines are safe</td>
+                                            <td><span style="color:blue">John</span> -- I cannot tell</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span style="color:blue">Many parents</span> believe the debunked theory
+                                                that vaccines cause autism.</td>
+                                            <td>vaccines cause autism</td>
+                                            <td><span style="color:blue">Many parents</span> AGREES with the statement
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span style="color:blue">Many parents</span> believe the debunked theory
+                                                that vaccines cause autism.</td>
+                                            <td>vaccines cause autism</td>
+                                            <td><span style="color:blue">John</span> DISAGREES with the statement</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
 
 
@@ -53,14 +228,93 @@
                     <div id="collapse1" class="panel-collapse collapse">
                         <div class="panel-body">
 
+                            <h4>The task</h4>
+                            <p>In this task, you will be presented with:</p>
+
+                            <ol>
+                                <li>a full SENTENCE written by JOHN, optionally quoting some other PEOPLE/SOURCES</li>
+                                <li>an independent STATEMENT</li>
+                            </ol>
+
+                            <p>Please indicate whether JOHN would AGREE or DISAGREE with the statement.<br>
+
+                                If there are other PEOPLE/SOURCES quoted in the sentence, please
+                                indicate their opinion with respect to the statement as well.</p>
+
+                            <h4>The labels</h4>
+                            <table class="table table-condensed table-borderless table-responsive"
+                                style="font-size:small;">
+                                <tbody>
+                                </tbody>
+                                <colgroup>
+                                    <col class="col-xs-1" />
+                                    <col class="col-xs-4" />
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <td>AGREEMENT</td>
+                                        <td>If John beliefs what is in the sentence, he must believe that the statement
+                                            is true.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>DISAGREEMENT</td>
+                                        <td>If John beliefs what is in the sentence, he must believe that the statement
+                                            is false.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PARTIAL AGREEMENT</td>
+                                        <td>If John beliefs what is in the sentence, he must believe that the statement
+                                            is only partially true.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>I CANNOT TELL</td>
+                                        <td>The statement is about something else than the sentence, or it cannot be
+                                            determined what
+                                            John believes to be true.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <h4>Important</h4>
+                            <p> Base your question only on what is written in the text. Try not to guess
+                                based on what you know about pro- and anti-vaccine beliefs. For example:</p>
+
+                            <ol>
+                                <li>I am convinced that vaccines are 100% safe.</li>
+                            </ol>
+
+                            <p> From this sentence, we can infer that John would disagree with a statement
+                                like "vaccines cause dangerous side effects". <br>
+                                After all, the statements "vaccines are 100% safe" and
+                                "vaccines cause dangerous side effects" cannot be true at the same time.</p>
+
+                            <p> However, even though John is likely pro-vaccination, we CANNOT infer that John
+                                agrees with a statement like "vaccines are effective". <br>
+                                After all, the safety and effectiveness of vaccines are two different topics,
+                                so John could believe that vaccines are safe but ineffective at the same time.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-secondary">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" href="#collapse2">Examples (click to expand)</a>
+                        </h4>
+                    </div>
+                    <div id="collapse2" class="panel-collapse collapse">
+                        <div class="panel-body">
+
                             <!-- EXAMPLE -->
+                            <h4>Sentences WITHOUT quoted people/sources:</h4>
                             <table class="table table-condensed table-striped table-responsive"
                                 style="font-size:small;">
                                 <tbody>
                                 </tbody>
                                 <colgroup>
-                                    <col class="col-xs-5" />
-                                    <col class="col-xs-3" />
+                                    <col class="col-xs-6" />
+                                    <col class="col-xs-2" />
                                     <col class="col-xs-4" />
                                 </colgroup>
                                 <tbody>
@@ -70,24 +324,90 @@
                                         <th>CORRECT ANSWER</th>
                                     </tr>
                                     <tr>
-                                        <td>It has been proven that vaccines are safe.</td>
-                                        <td>Vaccines cause autism.</td>
-                                        <td>John DISAGREES with the statement.</td>
+                                        <td>There is a clear causal relation between vaccines and ASD.</td>
+                                        <td>vaccines cause autism</td>
+                                        <td>John AGREES with the statement</td>
                                     </tr>
                                     <tr>
-                                        <td>According to Andrew Wakefield, vaccines cause ASD.</td>
-                                        <td>Vaccines cause autism.</td>
-                                        <td>John: I cannot tell.</td>
+                                        <td>Vaccines protect against infectious diseases that can cause serious illness.
+                                        </td>
+                                        <td>vaccines are effective</td>
+                                        <td>John AGREES with the statement</td>
                                     </tr>
                                     <tr>
-                                        <td>According to Andrew Wakefield, vaccines cause ASD.</td>
-                                        <td>Vaccines cause autism.</td>
-                                        <td>Andrew Wakefield AGREES with the statement.</td>
+                                        <td>It has not been proven that vaccines are safe.</td>
+                                        <td>vaccines are safe</td>
+                                        <td>John DISAGREES with the statement</td>
                                     </tr>
                                     <tr>
-                                        <td>It has been proven that vaccines are safe.</td>
-                                        <td>Vaccines cause autism.</td>
-                                        <td>John DISAGREES with the statement.</td>
+                                        <td>There is a clear causal relation between vaccines and ASD.</td>
+                                        <td>vaccines are safe</td>
+                                        <td>John DISAGREES with the statement</td>
+                                    </tr>
+                                    <tr>
+                                        <td>The vaccination is less effective in patients with HIV.</td>
+                                        <td>vaccines are effective</td>
+                                        <td>John ONLY PARTIALLY AGREES with the statement</td>
+                                    </tr>
+                                    <tr>
+                                        <td>In rare cases, vaccines could produce side effects.</td>
+                                        <td>vaccines are safe</td>
+                                        <td>John ONLY PARTIALLY AGREES with the statement</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Vaccines don't work 100% of the time.</td>
+                                        <td>vaccines are safe</td>
+                                        <td>John -- I cannot tell</td>
+                                    </tr>
+                                    <tr>
+                                        <td>It's not entirely clear whether vaccines really work.</td>
+                                        <td>vaccines are effective</td>
+                                        <td>John -- I cannot tell</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <h4>Sentences WITH quoted people/sources:</h4>
+                            <table class="table table-condensed table-striped table-responsive"
+                                style="font-size:small;">
+                                <tbody>
+                                </tbody>
+                                <colgroup>
+                                    <col class="col-xs-6" />
+                                    <col class="col-xs-2" />
+                                    <col class="col-xs-4" />
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <th>JOHN WROTE:</th>
+                                        <th>STATEMENT</th>
+                                        <th>CORRECT ANSWER</th>
+                                    </tr>
+                                    <tr>
+                                        <td>According to <span style="color:blue">Andrew Wakefield</span>, vaccines
+                                            cause ASD.</td>
+                                        <td>vaccines are safe</td>
+                                        <td><span style="color:blue">Andrew Wakefield</span> DISAGREES with the
+                                            statement
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>According to <span style="color:blue">Andrew Wakefield</span>, vaccines
+                                            cause ASD.</td>
+                                        <td>vaccines are safe</td>
+                                        <td><span style="color:blue">John</span> -- I cannot tell</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span style="color:blue">Many parents</span> believe the debunked theory
+                                            that vaccines cause autism.</td>
+                                        <td>vaccines cause autism</td>
+                                        <td><span style="color:blue">Many parents</span> AGREES with the statement</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span style="color:blue">Many parents</span> believe the debunked theory
+                                            that vaccines cause autism.</td>
+                                        <td>vaccines cause autism</td>
+                                        <td><span style="color:blue">John</span> DISAGREES with the statement</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -141,7 +461,7 @@
                                 </span>
                             </H5>
                         </label>
-                        <div class="col-md-4">
+                        <div class="col-md-5">
                             <select id="agreeOrDisagree" name="agreeOrDisagree" class="form-control"
                                 ng-model="question0.answer">
                                 <option value="" selected disabled hidden> -- select an option --
@@ -162,7 +482,7 @@
                                 </span>
                             </H5>
                         </label>
-                        <div class="col-md-4">
+                        <div class="col-md-5">
                             <select id="agreeOrDisagree" name="agreeOrDisagree" class="form-control"
                                 ng-model="question1.answer">
                                 <option value="" selected disabled hidden> -- select an option --
@@ -184,7 +504,7 @@
                                 </span>
                             </H5>
                         </label>
-                        <div class="col-md-4">
+                        <div class="col-md-5">
                             <select id="agreeOrDisagree" name="agreeOrDisagree" class="form-control"
                                 ng-model="question2.answer">
                                 <option value="" selected disabled hidden> -- select an option --
@@ -206,7 +526,7 @@
                                 </span>
                             </H5>
                         </label>
-                        <div class="col-md-4">
+                        <div class="col-md-5">
                             <select id="agreeOrDisagree" name="agreeOrDisagree" class="form-control"
                                 ng-model="question3.answer">
                                 <option value="" selected disabled hidden> -- select an option --
@@ -222,7 +542,7 @@
                     <div class="row">
                         <p style="text-align:center;font-size:80%;color:red">
                             &#9432; Base your answer only on what is written in the text. <br>
-                            Try not to guess based on what you know about the topic.</p>
+                            Try not to guess based on what you know about pro- or anti-vaccine beliefs.</p>
                     </div>
 
                     <!--
