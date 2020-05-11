@@ -1,0 +1,55 @@
+<div class="row" ng-repeat="source in sources.split('_') track by $index">
+    <label class="col-md-5" for="selectbasic" style="font-weight:normal">
+        <H5 align="right">
+            <span style="font-family:verdana;color:blue">
+                {{source}}
+            </span>
+        </H5>
+    </label>
+    <div class="col-md-5">
+        <select class="form-control" name="dropdown-sources-input" ng-model="selected"
+            ng-change="setAnswer('question{{$index}}', selected)">
+            <option value="" selected disabled hidden> -- select an option --
+            </option>
+            <option ng-repeat="opt in options" value="{{opt.value}}">{{opt.text}}</option>
+        </select>
+    </div>
+</div>
+
+<!-- <div>
+    <select class="form-control" name="custom-answer-input" ng-model="selected" ng-change="setAnswer('test', selected)">
+        <option value="" selected disabled hidden> -- select an option --
+        </option>
+        <option ng-repeat="opt in options track by $index" value="{{$index}}">{{opt}}</option>
+    </select>
+</div> -->
+
+
+
+
+<!-- <div>
+    <label class="radio" ng-repeat="opt in options track by $index">
+        <input type="radio" ng-click="setAnswer('test', opt)" name="custom-answer-input">
+        {{opt}}
+    </label>
+</div> -->
+<!-- <div class="row" ng-repeat="opt in options track by $index">
+    <label class="col-md-5" for="selectbasic" style="font-weight:normal">
+        <H5 align="right">
+            <span style="font-family:verdana;color:blue">
+                John (the author)
+            </span>
+        </H5>
+    </label>
+    <div class="col-md-5">
+        <select id="agreeOrDisagree" name="agreeOrDisagree" class="form-control" ng-model="question.answer">
+            <option value="" selected disabled hidden> -- select an option --
+            </option>
+            <option value="agree">AGREES with the statement</option>
+            <option value="disagree">DISAGREES with the statement</option>
+            <option value="partially_agree">ONLY PARTIALLY AGREES with the statement</option>
+            <option disabled>──────────</option>
+            <option value="uncertain">I cannot tell</option>
+        </select>
+    </div>
+</div> -->
