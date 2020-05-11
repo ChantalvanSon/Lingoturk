@@ -453,105 +453,25 @@
                             <legend>Which of the following is true?
                         </center>
                     </div>
-                    <div class="row">
-                        <label class="col-md-5" for="selectbasic" style="font-weight:normal">
-                            <H5 align="right">
-                                <span style="font-family:verdana;color:blue">
-                                    John (the author)
-                                </span>
-                            </H5>
-                        </label>
-                        <div class="col-md-5">
-                            <select id="agreeOrDisagree" name="agreeOrDisagree" class="form-control"
-                                ng-model="question0.answer">
-                                <option value="" selected disabled hidden> -- select an option --
-                                </option>
-                                <option value="agree">AGREES with the statement</option>
-                                <option value="disagree">DISAGREES with the statement</option>
-                                <option value="partially_agree">ONLY PARTIALLY AGREES with the statement</option>
-                                <option disabled>──────────</option>
-                                <option value="uncertain">I cannot tell</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row" style="visibility:{{question.visibility1}}">
-                        <label class="col-md-5" for="selectbasic" style="font-weight:normal">
-                            <H5 align="right">
-                                <span style="font-family:verdana;color:blue">
-                                    {{question.source1}}
-                                </span>
-                            </H5>
-                        </label>
-                        <div class="col-md-5">
-                            <select id="agreeOrDisagree" name="agreeOrDisagree" class="form-control"
-                                ng-model="question1.answer">
-                                <option value="" selected disabled hidden> -- select an option --
-                                </option>
-                                <option value="agree">AGREES with the statement</option>
-                                <option value="disagree">DISAGREES with the statement</option>
-                                <option value="partially_agree">ONLY PARTIALLY AGREES with the statement</option>
-                                <option disabled>──────────</option>
-                                <option value="uncertain">I cannot tell</option>
-                            </select>
-                        </div>
-                    </div>
 
-                    <div class="row" style="visibility:{{question.visibility2}}">
-                        <label class="col-md-5" for="selectbasic" style="font-weight:normal">
-                            <H5 align="right">
-                                <span style="font-family:verdana;color:blue">
-                                    {{question.source2}}
-                                </span>
-                            </H5>
-                        </label>
-                        <div class="col-md-5">
-                            <select id="agreeOrDisagree" name="agreeOrDisagree" class="form-control"
-                                ng-model="question2.answer">
-                                <option value="" selected disabled hidden> -- select an option --
-                                </option>
-                                <option value="agree">AGREES with the statement</option>
-                                <option value="disagree">DISAGREES with the statement</option>
-                                <option value="partially_agree">ONLY PARTIALLY AGREES with the statement</option>
-                                <option disabled>──────────</option>
-                                <option value="uncertain">I cannot tell</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="row" style="visibility:{{question.visibility3}}">
-                        <label class="col-md-5" for="selectbasic" style="font-weight:normal">
-                            <H5 align="right">
-                                <span style="font-family:verdana;color:blue">
-                                    {{question.source3}}
-                                </span>
-                            </H5>
-                        </label>
-                        <div class="col-md-5">
-                            <select id="agreeOrDisagree" name="agreeOrDisagree" class="form-control"
-                                ng-model="question3.answer">
-                                <option value="" selected disabled hidden> -- select an option --
-                                </option>
-                                <option value="agree">AGREES with the statement</option>
-                                <option value="disagree">DISAGREES with the statement</option>
-                                <option value="partially_agree">ONLY PARTIALLY AGREES with the statement</option>
-                                <option disabled>──────────</option>
-                                <option value="uncertain">I cannot tell</option>
-                            </select>
-                        </div>
-                    </div>
+                    <dropdown-sources sources="question.sources"
+                        options="[{value:'agree', text: 'AGREES with the statement'},{value: 'disagree', text:'DISAGREES with the statement'},{value: 'partially_agree', text:'ONLY PARTIALLY AGREES with the statement'}, {value: 'uncertain', text:'I cannot tell'}]"
+                        answer="question.answer" finished="question.finished">
+                    </dropdown-sources>
+                    <br>
                     <div class="row">
                         <p style="text-align:center;font-size:80%;color:red">
                             &#9432; Base your answer only on what is written in the text. <br>
                             Try not to guess based on what you know about pro- or anti-vaccine beliefs.</p>
                     </div>
 
+
+
                     <!--
                         End of question
                         -->
-                    <button
-                        ng-disabled="question0.answer === undefined || (question.visibility1 === 'visible' && question1.answer === undefined) || (question.visibility2 === 'visible' && question2.answer === undefined) || (question.visibility3 === 'visible' && question3.answer === undefined)"
-                        ng-click="RC.nextQuestion()" type="button" class="btn btn-default"
-                        style="float:right ; margin-top:20px">Next</button>
+                    <button ng-click="RC.nextQuestion()" type="button" class="btn btn-default"
+                        ng-disabled="!(question.finished)" style="float:right ; margin-top:20px">Next</button>
                     <!--
                         If you don't want to skip participants through your items, you should prevent them by checking if the input is empty. In that case the
                         button will be disabled. We use the "ng-disabled" attribute to achieve that. Below you find an example how that might look like:

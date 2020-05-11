@@ -63,5 +63,10 @@
         "type": "String",
         "simpleTypeName": "String",
         "name": "visibility3"
+    },
+    {
+        "type": "String",
+        "simpleTypeName": "String",
+        "name": "sources"
     }
 ]

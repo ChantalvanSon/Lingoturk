@@ -139,6 +139,34 @@
         };
     });
 
+    app.directive("dropdownSources", function () {
+        return {
+            restrict: 'E',
+            templateUrl: '/assets/templates/dropdownSources.html',
+            scope: {
+                answer: '=',
+                sources: '=',
+                options: '=',
+                finished: '=?',
+            },
+            link: function (scope, element, attrs) {
+                if (!scope.hasOwnProperty("answer") || typeof (scope.answer) === "undefined") {
+                    scope.answer = {};
+                    scope.finished = false;
+                }
+                scope.setAnswer = function (questionID, selection) {
+                    // add to Object
+                    scope.answer[questionID] = selection;
+
+                    // check if answers for all sources in Object
+                    var n_sources = scope.sources.split("_").length;
+                    var keys = Object.keys(scope.answer).length;
+                    scope.finished = n_sources == keys;
+                }
+            }
+        };
+    });
+
     app.directive("checkboxAnswer", function () {
         return {
             restrict: 'E',
@@ -198,6 +226,8 @@
             }
         };
     });
+
+
 
     app.directive("sliderAnswer", function () {
         return {
