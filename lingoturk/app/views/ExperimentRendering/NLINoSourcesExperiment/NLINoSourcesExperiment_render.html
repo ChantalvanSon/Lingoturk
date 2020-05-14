@@ -1,0 +1,405 @@
+<div style="height: 100% ; width: 100%; display: table">
+    <div ng-if="RC.showMessage == 'none'" style="display: table-cell ; height: 100% ; vertical-align: middle ;">
+        <div ng-if="RC.state == 'instructionsSlide'" class="panel panel-primary" style="width:90%; margin:auto">
+            <div class="panel-heading" style="font-weight: bolder ;">Instructions</div>
+            <div class="panel-body">
+
+                <h4>The goal</h4>
+                <p>The goal of this experiment is to create a system that can <b>automatically detect contradicting
+                        information</b> across texts. We hope that some day this will help people navigate through the
+                    information wilderness that is the Internet. Not by telling them which information is true and which
+                    is fake, but by providing them with (other) sources that contradict or confirm some given statement.
+                    That way, people can make their own decision on which information seems trustworthy.</p>
+
+                <p>An example of a topic with a lot of conflicting views is <b>vaccination</b>. Therefore,
+                    the vaccination debate is our use case. <br> Can you help us determine which statements about
+                    vaccines are confirmed or denied in a given sentence?</p>
+
+                <h4>The task</h4>
+                <p>You will be presented with:</p>
+
+                <ol>
+                    <li>a full SENTENCE, optionally quoting some PEOPLE/SOURCES</li>
+                    <li>an independent STATEMENT</li>
+                </ol>
+
+                <p>We use the alias JOHN to refer to the AUTHOR of the sentence. Please indicate whether JOHN would
+                    AGREE or DISAGREE with the statement.</p>
+
+                <p>If there are other PEOPLE/SOURCES quoted in the sentence, please
+                    indicate their opinion with respect to the statement as well.</p>
+
+                <h5>Some more detailed instructions and examples can be found on the next page.</h5>
+
+
+                <button ng-click="RC.next()" type="button" class="btn btn-default"
+                    style="float:right ; margin-top:20px">Next</button>
+            </div>
+        </div>
+
+        <div ng-if="RC.state == 'workerIdSlide'" class="panel panel-primary" style="width:90%; margin:auto">
+            <div class="panel-heading" style="font-weight: bolder ;">Please enter your workerId into the box below:
+            </div>
+            <div class="panel-body">
+                <input id="workerId" ng-model="RC.workerId" name="workerId" type="text" class="form-control"
+                    placeholder="enter here">
+                <button ng-click="RC.next()" type="button" ng-disabled="RC.workerId == ''" class="btn btn-default"
+                    style="float:right ; margin-top:20px">Next</button>
+            </div>
+        </div>
+
+        <div ng-if="RC.state == 'statisticsSlide'">
+            <statistics-slide statistics="RC.statistics" click="RC.next"></statistics-slide>
+        </div>
+
+        <div id="experiment_content" ng-if="RC.state == 'questionSlide' && RC.questionIndex == $index"
+            ng-repeat="question in RC.questions" style="width:90%; margin:auto">
+            <!-- the main content of the experiment goes here -->
+
+            <div class="panel-group">
+                <div class="panel panel-secondary">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" href="#collapse1">Instructions (click to expand)</a>
+                        </h4>
+                    </div>
+                    <div id="collapse1" class="panel-collapse collapse">
+                        <div class="panel-body">
+
+                            <h4>The labels</h4>
+                            <table class="table table-condensed table-borderless table-responsive"
+                                style="font-size:small;">
+                                <tbody>
+                                </tbody>
+                                <colgroup>
+                                    <col class="col-xs-1" />
+                                    <col class="col-xs-4" />
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <td>AGREEMENT</td>
+                                        <td>If John beliefs what is in the sentence, he must believe that the statement
+                                            is true.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>DISAGREEMENT</td>
+                                        <td>If John beliefs what is in the sentence, he must believe that the statement
+                                            is false.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PARTIAL AGREEMENT</td>
+                                        <td>If John beliefs what is in the sentence, he must believe that the statement
+                                            is only partially true.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>I CANNOT TELL</td>
+                                        <td>The statement is about something else than the sentence, or it cannot be
+                                            determined what
+                                            John believes to be true.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <h4>The same or different topics?</h4>
+
+                            <table class="table table-condensed table-borderless table-responsive"
+                                style="font-size:small;">
+                                <tbody>
+                                </tbody>
+                                <colgroup>
+                                    <col class="col-xs-2" />
+                                    <col class="col-xs-4" />
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <th>JOHN WROTE:</th>
+                                        <th>STATEMENT</th>
+                                    </tr>
+                                    <tr>
+                                        <td>I am convinced that vaccines are 100% safe.</td>
+                                        <td>vaccines cause dangerous side effects</td>
+                                    </tr>
+                                    <tr>
+                                        <td>I am convinced that vaccines are 100% safe.</td>
+                                        <td>vaccines are effective</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <p> From the sentence above, we can infer that John would disagree with the first statement,
+                                because "vaccines are 100% safe" and "vaccines cause dangerous side effects" cannot be
+                                true at the same time.</p>
+
+                            <p> However, we CANNOT infer that John agrees with the second statement.
+                                After all, the <b>safety</b> and <b>effectiveness</b> of vaccines are <b>two different
+                                    topics</b>,
+                                so John could believe that vaccines are safe but ineffective at the same time.
+                            </p>
+                            <p> This might be confusing, because you may infer that John is pro-vaccine and
+                                therefore probably also beliefs that vaccines are effective. However, try not to guess
+                                based on
+                                what you know about pro- and anti-vaccine beliefs, but base your question only on what
+                                is written in the text. </p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-secondary">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" href="#collapse2">Examples (click to expand)</a>
+                        </h4>
+                    </div>
+                    <div id="collapse2" class="panel-collapse collapse">
+                        <div class="panel-body">
+
+                            <!-- EXAMPLE -->
+                            <h4>Sentences WITHOUT quoted people/sources:</h4>
+                            <table class="table table-condensed table-striped table-responsive"
+                                style="font-size:small;">
+                                <tbody>
+                                </tbody>
+                                <colgroup>
+                                    <col class="col-xs-5" />
+                                    <col class="col-xs-3" />
+                                    <col class="col-xs-4" />
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <th>JOHN WROTE:</th>
+                                        <th>STATEMENT</th>
+                                        <th>CORRECT ANSWER</th>
+                                    </tr>
+                                    <tr>
+                                        <td>There is a clear causal relation between vaccines and ASD.</td>
+                                        <td>vaccines cause autism</td>
+                                        <td>John AGREES with the statement</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Vaccines protect against infectious diseases that can cause serious illness.
+                                        </td>
+                                        <td>vaccines are effective</td>
+                                        <td>John AGREES with the statement</td>
+                                    </tr>
+                                    <tr>
+                                        <td>It has not been proven that vaccines are safe.</td>
+                                        <td>vaccines are safe</td>
+                                        <td>John DISAGREES with the statement</td>
+                                    </tr>
+                                    <tr>
+                                        <td>There is a clear causal relation between vaccines and ASD.</td>
+                                        <td>vaccines are safe</td>
+                                        <td>John DISAGREES with the statement</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Vaccines can cause autism.</td>
+                                        <td>vaccines always cause autism</td>
+                                        <td>John ONLY PARTIALLY AGREES with the statement</td>
+                                    </tr>
+                                    <tr>
+                                        <td>The vaccination is less effective in patients with HIV.</td>
+                                        <td>vaccines are effective</td>
+                                        <td>John ONLY PARTIALLY AGREES with the statement</td>
+                                    </tr>
+                                    <tr>
+                                        <td>In rare cases, vaccines could produce side effects.</td>
+                                        <td>vaccines are safe</td>
+                                        <td>John ONLY PARTIALLY AGREES with the statement</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Vaccines don't work 100% of the time.</td>
+                                        <td>vaccines are safe</td>
+                                        <td>John -- I cannot tell</td>
+                                    </tr>
+                                    <tr>
+                                        <td>It's not entirely clear whether vaccines really work.</td>
+                                        <td>vaccines are effective</td>
+                                        <td>John -- I cannot tell</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <h4>Sentences WITH quoted people/sources:</h4>
+                            <table class="table table-condensed table-striped table-responsive"
+                                style="font-size:small;">
+                                <tbody>
+                                </tbody>
+                                <colgroup>
+                                    <col class="col-xs-5" />
+                                    <col class="col-xs-3" />
+                                    <col class="col-xs-4" />
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <th>JOHN WROTE:</th>
+                                        <th>STATEMENT</th>
+                                        <th>CORRECT ANSWER</th>
+                                    </tr>
+                                    <tr>
+                                        <td>According to <span style="color:blue">Andrew Wakefield</span>, vaccines
+                                            cause ASD.</td>
+                                        <td>vaccines are safe</td>
+                                        <td><span style="color:blue">Andrew Wakefield</span> DISAGREES with the
+                                            statement
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>According to <span style="color:blue">Andrew Wakefield</span>, vaccines
+                                            cause ASD.</td>
+                                        <td>vaccines are safe</td>
+                                        <td><span style="color:blue">John</span> -- I cannot tell</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span style="color:blue">Many parents</span> believe the debunked theory
+                                            that vaccines cause autism.</td>
+                                        <td>vaccines cause autism</td>
+                                        <td><span style="color:blue">Many parents</span> AGREES with the statement</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span style="color:blue">Many parents</span> believe the debunked theory
+                                            that vaccines cause autism.</td>
+                                        <td>vaccines cause autism</td>
+                                        <td><span style="color:blue">John</span> DISAGREES with the statement</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="experiment_panel_1" class="panel panel-primary">
+                <div id="experiment_heading_1" class="panel-heading" style="font-weight: bolder ;">
+                    Read the sentence.
+                </div>
+                <div id="experiment_body_1" class="panel-body">
+                    <!--
+                        Question's content goes here
+                        -->
+                    <!-- {{question}} -->
+                    <div class="row" id="Content">
+                        <center>
+                            <fieldset>
+                                <!--<legend>Read the following texts and pay attention to the highlighted statements:</legend>-->
+                                <div class="col-md-6">
+                                    <legend>SENTENCE</legend>
+                                    <div class="passage" id="sentence" ng-bind-html="question.sentence"></div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <legend>STATEMENT</legend>
+                                    <div class="passage" id="passage">{{question.statement}}</div>
+                                </div>
+                            </fieldset>
+                        </center>
+                    </div>
+
+
+                    <br>
+                    <br>
+
+                    <div class="row">
+                        <center>
+                            <legend>Which of the following is true?
+                        </center>
+                    </div>
+
+                    <div class="row">
+                        <label class="col-md-5" for="selectbasic" style="font-weight:normal">
+                            <H5 align="right">
+                                <span style="font-family:verdana;color:blue">
+                                    The sentence
+                                </span>
+                            </H5>
+                        </label>
+                        <div class="col-md-5">
+                            <select class="form-control" name="agreeOrDisagree" ng-model="question.answer">
+                                <option value="" selected disabled hidden> -- select an option --</option>
+                                <option value="agree">AGREES with the statement</option>
+                                <option value="disagree">DISAGREES with the statement</option>
+                                <option value="partially_agree">ONLY PARTIALLY AGREES with the statement</option>
+                                <option value="uncertain">I cannot tell</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <br>
+                    <div class="row">
+                        <p style="text-align:center;font-size:80%;color:red">
+                            &#9432; Base your answer only on what is written in the text. <br>
+                            Try not to guess based on what you know about pro- or anti-vaccine beliefs.</p>
+                    </div>
+
+
+
+                    <!--
+                        End of question
+                        -->
+                    <button ng-click="RC.nextQuestion()" type="button" class="btn btn-default"
+                        ng-disabled="question.answer === undefined" style="float:right ; margin-top:20px">Next</button>
+                    <!--
+                        If you don't want to skip participants through your items, you should prevent them by checking if the input is empty. In that case the
+                        button will be disabled. We use the "ng-disabled" attribute to achieve that. Below you find an example how that might look like:
+
+                        <button ng-disabled="question.answer === undefined || question.answer === '' || question.answer == {}" ng-click="RC.nextQuestion()" type="button" class="btn btn-default" style="float:right ; margin-top:20px">Next</button>
+                        -->
+                </div>
+            </div>
+            <!-- /the main content of the experiment goes here -->
+        </div>
+    </div>
+
+    <div ng-if="RC.showMessage == 'nextSubList'"
+        style="height : 100% ; width : 100% ; display : table ; position: absolute; top: 0; left: 0">
+        <div style="display: table-cell ; height: 100% ; vertical-align: middle ;">
+            <div style="width:90%; margin:auto">
+                <!-- <this message is shown if a user successfully finished a sublist> -->
+                <div class="panel panel-primary">
+                    <!-- <the message's heading> -->
+                    <div class="panel-heading" style="font-weight: bolder ;" id="nextSubList_title">Attention:</div>
+                    <!-- </the message's heading> -->
+                    <div class="panel-body">
+                        <!-- <the message content> -->
+                        <div id="nextSubList_message">
+                            You've successfully completed a sublist. You may either stop here or continue with
+                            another
+                            one.
+                        </div>
+                        <!-- </the message content. please don't edit the buttons below (except their label)> -->
+                        <hr />
+                        <button ng-click="RC.processFinish()" style="float:right; margin-left: 10px;"
+                            class="btn btn-default" type="button">Stop here</button>
+                        <button ng-click="RC.nextSublist()" style="float:right" class="btn btn-default"
+                            type="button">Continue</button>
+                    </div>
+                </div>
+                <!-- </this message is shown if a user successfully finished a sublist> -->
+            </div>
+        </div>
+    </div>
+
+    <div ng-if="RC.showMessage == 'goodBye'"
+        style="height : 100% ; width : 100% ; display : table ; position: absolute; top: 0; left: 0">
+        <div style="display: table-cell ; height: 100% ; vertical-align: middle ;">
+            <div style="width:90%; margin:auto">
+                <div class="panel panel-primary">
+                    <div id="goodBye_title" class="panel-heading" style="font-weight: bolder ;">Attention:</div>
+                    <div class="panel-body">
+                        <div id="goodBye_message">
+                            You've successfully completed the experiment. Thank you for your participation. To hand
+                            in
+                            your submission, click on the "Submit"-button below.
+                        </div>
+                        <hr />
+                        <button ng-click="RC.finished()" style="float:right" class="btn btn-default"
+                            type="button">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
