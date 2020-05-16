@@ -17,7 +17,17 @@
     {
         "type": "String",
         "simpleTypeName": "String",
-        "name": "sentence_html"
+        "name": "html_sources"
+    },
+    {
+        "type": "String",
+        "simpleTypeName": "String",
+        "name": "html_semroles"
+    },
+    {
+        "type": "String",
+        "simpleTypeName": "String",
+        "name": "html_both"
     },
     {
         "type": "String",
@@ -38,5 +48,10 @@
         "type": "String",
         "simpleTypeName": "String",
         "name": "sources"
+    },
+    {
+        "type": "String",
+        "simpleTypeName": "String",
+        "name": "subList"
     }
 ]

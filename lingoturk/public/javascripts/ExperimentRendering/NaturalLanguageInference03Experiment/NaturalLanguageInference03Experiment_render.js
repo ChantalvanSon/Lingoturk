@@ -1,5 +1,5 @@
 (function () {
-    var app = angular.module('NLIExperimentApp', ["Lingoturk"]);
+    var app = angular.module('NaturalLanguageInference03ExperimentApp', ["Lingoturk"]);
 
     app.controller('RenderController', ['$http', '$timeout', '$scope', function ($http, $timeout, $scope) {
         var self = this;
@@ -90,7 +90,7 @@
         self.failedTries = 0;
         this.submitResults = function (successCallback, errorCallback) {
             var results = {
-                experimentType: "NLIExperiment",
+                experimentType: "NaturalLanguageInference03Experiment",
                 results: self.questions,
                 expId: self.expId,
                 origin: self.origin,

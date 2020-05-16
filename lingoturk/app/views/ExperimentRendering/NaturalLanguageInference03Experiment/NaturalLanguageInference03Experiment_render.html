@@ -285,8 +285,8 @@
                             <fieldset>
                                 <!--<legend>Read the following texts and pay attention to the highlighted statements:</legend>-->
                                 <div class="col-md-6">
-                                    <legend>SENTENCE</legend>
-                                    <div class="passage" id="sentence" ng-bind-html="question.sentence"></div>
+                                    <legend>JOHN WROTE:</legend>
+                                    <div class="passage" id="sentence" ng-bind-html="question.html_both"></div>
                                 </div>
 
                                 <div class="col-md-6">
@@ -307,26 +307,10 @@
                         </center>
                     </div>
 
-                    <div class="row">
-                        <label class="col-md-5" for="selectbasic" style="font-weight:normal">
-                            <H5 align="right">
-                                <span style="font-family:verdana;color:blue">
-                                    The sentence
-                                </span>
-                            </H5>
-                        </label>
-                        <div class="col-md-5">
-                            <select class="form-control" name="agreeOrDisagree" ng-model="question.answer">
-                                <option value="" selected disabled hidden> -- select an option --</option>
-                                <option value="agree">AGREES with the statement</option>
-                                <option value="disagree">DISAGREES with the statement</option>
-                                <option value="partially_agree">ONLY PARTIALLY AGREES with the statement</option>
-                                <option value="uncertain">I cannot tell</option>
-                            </select>
-                        </div>
-                    </div>
-
-
+                    <dropdown-sources sources="question.sources"
+                        options="[{value:'agree', text: 'AGREES with the statement'},{value: 'disagree', text:'DISAGREES with the statement'},{value: 'partially_agree', text:'ONLY PARTIALLY AGREES with the statement'}, {value: 'uncertain', text:'I cannot tell'}]"
+                        answer="question.answer" finished="question.finished">
+                    </dropdown-sources>
                     <br>
                     <div class="row">
                         <p style="text-align:center;font-size:80%;color:red">
@@ -340,7 +324,7 @@
                         End of question
                         -->
                     <button ng-click="RC.nextQuestion()" type="button" class="btn btn-default"
-                        ng-disabled="question.answer === undefined" style="float:right ; margin-top:20px">Next</button>
+                        ng-disabled="!(question.finished)" style="float:right ; margin-top:20px">Next</button>
                     <!--
                         If you don't want to skip participants through your items, you should prevent them by checking if the input is empty. In that case the
                         button will be disabled. We use the "ng-disabled" attribute to achieve that. Below you find an example how that might look like:
