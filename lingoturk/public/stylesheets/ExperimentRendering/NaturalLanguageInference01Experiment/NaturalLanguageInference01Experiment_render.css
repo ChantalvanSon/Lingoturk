@@ -76,6 +76,12 @@
     border: 1px solid #28B463;
 }
 
+/* red */
+.sourceterm {
+    background-color: #48C9B0;
+    border: 1px solid #45B39D;
+}
+
 /* green */
 .semroleterm {
     background-color: #fdbf6f;
