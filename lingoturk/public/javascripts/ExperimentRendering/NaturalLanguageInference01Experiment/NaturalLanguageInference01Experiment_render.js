@@ -125,14 +125,6 @@
         };
 
         this.nextQuestion = function () {
-            var currentDate = new Date();
-            var date = currentDate.getDate();
-            var month = currentDate.getMonth(); //Be careful! January is 0 not 1
-            var year = currentDate.getFullYear();
-            var timestamp = currentDate.getTime();
-            console.log(date);
-            console.log(month);
-            console.log(year, timestamp);
 
             if (self.questionIndex + 1 < self.questions.length) {
                 ++self.questionIndex;
