@@ -29,7 +29,6 @@
         ];
         this.delimiter = 'tab';
         this.commentSequence = '#';
-        console.log('test');
 
         self.questionColumnNames = null;
 
@@ -141,21 +140,28 @@
         };
 
         this.processFile = function (fileObject) {
+            // read content of file (header and rows)
             var totalContent = CSVToArray(fileObject.fileContent, self.delimiter);
             var parsedContent = totalContent.slice(1);
             var header = totalContent[0];
 
-            console.log(header);
+            // determine if header contains listNr; 
+            // if so, remove from header (but keep in data for splitting lists)
+            var listNrIndex = header.indexOf("listNr");
+            if (listNrIndex > -1) {
+                header.splice(listNrIndex, 1);
+            }
 
-            var columnNames = new Array(parsedContent[0].length);
+            // create column names
+            var columnNames = new Array(header.length);
             for (var i = 0; i < columnNames.length; ++i) {
                 columnNames[i] = header[i];
-                console.log(columnNames);
             }
             if (self.questionColumnNames == null) {
                 self.questionColumnNames = columnNames;
             }
 
+            // skip empty rows & comment rows
             for (var i = 0; i < parsedContent.length; ++i) {
                 row = parsedContent[i];
                 var notAllEmpty = false;
@@ -170,11 +176,37 @@
                 }
             }
 
-            var group = self.createGroup();
-            group.fileName = fileObject.fileName;
-            group.parsedContent = parsedContent;
+            // two scenarios: listNr column or no listNr column
+            if (listNrIndex > -1) {
 
-            self.addGroup(group);
+                // create different lists based on values in listNr column
+                var groupsByListNr = {};
+                for (i = 0; i < parsedContent.length; ++i) {
+                    let row = parsedContent[i];
+                    let group = groupsByListNr[row[listNrIndex]];
+                    if (!group) {
+                        group = [];
+                        groupsByListNr[row[listNrIndex]] = group;
+                    }
+                    row.splice(listNrIndex, 1);  // drop listNr from data
+                    group.push(row);
+                }
+                for (const [listNr, data] of Object.entries(groupsByListNr)) {
+                    let group = self.createGroup();
+                    group.fileName = fileObject.fileName + '-' + listNr;
+                    group.listNumber = listNr;
+                    group.parsedContent = data;
+                    self.addGroup(group);
+                }
+
+            } else {
+                // if no listNr column, create single group
+                let group = self.createGroup();
+                group.fileName = fileObject.fileName;
+                group.parsedContent = parsedContent;
+
+                self.addGroup(group);
+            }
         };
 
         $(document).ready(function () {
